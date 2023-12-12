@@ -20,7 +20,7 @@ create type tcage as object (
 /
 
 -- Definir une collection libre ens_cages de references sur tcage
-create type ens_cages as table of tcage;
+create type ens_cages as table of ref tcage;
 /
 
 -- Definir une collection statique (Varray) tspecialites de chaines de caracteres (fonction de la cage)
