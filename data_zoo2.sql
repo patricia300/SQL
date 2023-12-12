@@ -39,10 +39,10 @@ insert into Table(select treat(value(g) as tgardien).liste_cages from lesemploye
 / Insertion des instances d'animaux
 // ATTENTION: l'avant dernier attribut est une r�f�rence sur une cage et pas un num�ro de cage (sinon revoir le sch�ma)=> requ�te SQL
 // Lorsqu'aucune maladie n'apparait, il s'agit d'un collection vide de maladies.
-insert into LesAnimaux values ('Charly', 'male',   'lion', 'fauve',  'Kenya',  2018,   (select ___________ from lesCages c where c.nocage=12),_______________(tmaladie(to_date('11092023','DDMMYYYY'),'rage de dents'), tmaladie(to_date('05122022','DDMMYYYY'),'grippe')));
-insert into LesAnimaux values ('Arthur', 'male',   'ours', 'fosse',  'France', 2020,   (select __________________ from lesCages c where c.nocage=1),_______________ );
-insert into LesAnimaux values ('Chloe',  'femelle', 'pie', 'petits oiseaux' ,  'France', 2019,   (select _________________ from lesCages c where c.nocage=3),__________________(tmaladie(TO_DATE('20102022','DDMMYYYY'),'grippe')));
-insert into LesAnimaux values ('Milou',  'male' ,  'leopard', 'fauve', 'France', 2016,  (select ________________ from lesCages c where c.nocage=11),__________________(tmaladie(to_date('10012021','DDMMYYYY'),'angine')));
-insert into LesAnimaux values ('Tintin', 'male' , 'leopard', 'fauve', 'France', 2017,    (select ________________ from lesCages c where c.nocage=11),____________________);
-insert into LesAnimaux values ('Charlotte', 'femelle', 'lion',  'fauve',  'Kenya',  2021,      (select __________________ from lesCages c where c.nocage=12),_____________________);
+insert into LesAnimaux values ('Charly', 'male',   'lion', 'fauve',  'Kenya',  2018, (select REF(c) from lesCages c where c.nocage=12),liste_maladies(tmaladie(to_date('11092023','DDMMYYYY'),'rage de dents'), tmaladie(to_date('05122022','DDMMYYYY'),'grippe')));
+insert into LesAnimaux values ('Arthur', 'male',   'ours', 'fosse',  'France', 2020, (select REF(c) from lesCages c where c.nocage=1),liste_maladies());
+insert into LesAnimaux values ('Chloe',  'femelle', 'pie', 'petits oiseaux' ,  'France', 2019, (select REF(c) from lesCages c where c.nocage=3),liste_maladies(tmaladie(TO_DATE('20102022','DDMMYYYY'),'grippe')));
+insert into LesAnimaux values ('Milou',  'male' ,  'leopard', 'fauve', 'France', 2016, (select REF(c) from lesCages c where c.nocage=11),liste_maladies(tmaladie(to_date('10012021','DDMMYYYY'),'angine')));
+insert into LesAnimaux values ('Tintin', 'male' , 'leopard', 'fauve', 'France', 2017, (select REF(c) from lesCages c where c.nocage=11),liste_maladies());
+insert into LesAnimaux values ('Charlotte', 'femelle', 'lion',  'fauve',  'Kenya',  2021, (select REF(c) from lesCages c where c.nocage=12),liste_maladies());
 
