@@ -12,7 +12,7 @@ drop type tspecialites;
 
 
 -- Definir le type tcage
-create type tcage as ________ (
+create type tcage as object (
 	noCage number(3),
 	fonction varchar2(20),
 	noAllee number(3)
@@ -20,40 +20,41 @@ create type tcage as ________ (
 /
 
 -- Definir une collection libre ens_cages de references sur tcage
-create type _________ as _____ of __________;
+create type ens_cages as table of tcage;
 /
 
 -- Definir une collection statique (Varray) tspecialites de chaines de caracteres (fonction de la cage)
-Create type tspecialites as _______________ OF _________________ ;
+Create type tspecialites as Varray(10) OF varchar(30) ;
 /
 
 -- Definir un type temploye
 create type temploye as object(
 	nomE varchar2(20),
 	adresse varchar2(20),
-	fonction_cage _____
+	fonction_cage tspecialites
 )
-_____;
+not final
+;
 /
 
 
 -- Definir les sous-types de temploye: tgardien et trespsonsable
 create type tgardien under temploye (
-	liste_cages _____________ );
+	liste_cages ens_cages);
 /
 
 create type tresponsable under temploye (
-	noAllee _________________ );
+	noAllee number(3) );
 /
 
--- Creation de la table lesemployes (avec nomE comme clé primaire )
+-- Creation de la table lesemployes (avec nomE comme clï¿½ primaire )
 --  sans oublier la nested table
-create table lesemployes of ________________ ( _______________ );
-nested table ________________ store as cages;
+create table lesemployes of temploye ( CONSTRAINT lesemployes_c1 PRIMARY KEY (nomE) );
+nested table liste_cages store as cages;
 
--- Creation de la table lescages (nocage est la clé primaire)
-create table ________ of _________
-( ________________ );
+-- Creation de la table lescages (nocage est la clï¿½ primaire)
+create table lescages of tcage
+( CONSTRAINT lescages_c2 PRIMARY KEY (noCage) );
 
 
 create type tmaladie as object(
@@ -62,10 +63,10 @@ create type tmaladie as object(
 /
 
 -- Definir une collection libre ens_maladies de tmaladie
-create type ens_maladies as ______________ of ____________ ;
+create type ens_maladies as table of tmaladie;
 /
 
--- Compléter la définition de la table animaux
+-- Complï¿½ter la dï¿½finition de la table animaux
 create table LesAnimaux (
 	nomA varchar2(20) primary key,
 	sexe varchar2(13),
@@ -73,6 +74,6 @@ create table LesAnimaux (
 	fonction_cage varchar2(20),
 	pays varchar2(20),
 	anNais number(4),
-	lacage REF ________________ ,
-	liste_maladies ______________ )
-nested table ______________________ store as maladies;
+	lacage REF tcage ,
+	liste_maladies ens_maladies )
+nested table liste_maladies store as maladies;
