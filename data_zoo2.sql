@@ -3,17 +3,17 @@
 // Vous pourrez passer le script lorsqu'il sera compl�t� correctement !
 
 // ins�rer les instances de responsables (avec les constructeurs qui vont bien): Verdier, Desmoulins, Jouanot
-insert into LesEmployes values (___________('Verdier'  , 'Noumea', __________('fauve'),10));
-insert into LesEmployes values (______________('Desmoulins'  , 'Ushuaia',__________('fauve','fosse','petits oiseaux'),2) );
-insert into LesEmployes values (______________('Jouanot'   , 'Papeete',___________('fosse','aquarium','grand aquarium'),1) );
+insert into LesEmployes values (tresponsable('Verdier'  , 'Noumea', tspecialites('fauve'),10));
+insert into LesEmployes values (tresponsable('Desmoulins'  , 'Ushuaia',tspecialites('fauve','fosse','petits oiseaux'),2) );
+insert into LesEmployes values (tresponsable('Jouanot'   , 'Papeete',tspecialites('fosse','aquarium','grand aquarium'),1) );
 
 // ins�rer les instances de gardiens: Martins (spec: fauve), Labbe (spec:fauve), Lachaize (spec:'fauve','fosse','petits oiseaux'), Huard (spec:'fosse'), STMarcel (vide)
 // pour l'instant ils doivent avoir une collection de cages gard�es vide
-insert into LesEmployes values (_____________________________);
-insert into LesEmployes values (_____________________________);
-insert into LesEmployes values (_____________________________);
-insert into LesEmployes values (_____________________________);
-insert into LesEmployes values (_____________________________);
+insert into LesEmployes values (tgardien('Martins','Calvi',tspecialites('fauve'),ens_cages()));
+insert into LesEmployes values (tgardien('Labbe','',tspecialites('fauve'),ens_cages()));
+insert into LesEmployes values (tgardien('Lachaize','',tspecialites('fauve','fosse','petits oiseaux'),ens_cages()));
+insert into LesEmployes values (tgardien('Huard','',tspecialites('fosse'),ens_cages()));
+insert into LesEmployes values (tgardien('STMarcel','',tspecialites(),ens_cages()));
 
 // ins�rer les cages
 insert into LesCages values (11 ,  'fauve'           , 10 );
@@ -33,7 +33,8 @@ insert into LesCages values (12     , 'fauve' , 10);
 // puis Lachaize avec la 1, 11 et 12
 // puis Huard pour la 1
 // et enfin Lachaize � nouveau pour la cage 3 (ce qui prouve qu'on peut ajouter des �l�ments � la collection ! 
-insert into Table(select treat(value(g) as tgardien).______________ from lesemployes g where ____________='Martins' ) value (SELECT ____________ FROM lesCages c WHERE c.nocage in (11,12));
+insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Martins' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (11,12));
+insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Labbe' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (11,12));
 
 / Insertion des instances d'animaux
 // ATTENTION: l'avant dernier attribut est une r�f�rence sur une cage et pas un num�ro de cage (sinon revoir le sch�ma)=> requ�te SQL
