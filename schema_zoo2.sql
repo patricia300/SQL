@@ -49,7 +49,7 @@ create type tresponsable under temploye (
 
 -- Creation de la table lesemployes (avec nomE comme cl� primaire )
 --  sans oublier la nested table
-create table lesemployes of temploye ( CONSTRAINT lesemployes_c1 PRIMARY KEY (nomE) );
+create table lesemployes of temploye ( PRIMARY KEY (nomE) );
 nested table liste_cages store as cages;
 
 -- Creation de la table lescages (nocage est la cl� primaire)
