@@ -10,10 +10,10 @@ insert into LesEmployes values (tresponsable('Jouanot'   , 'Papeete',tspecialite
 // ins�rer les instances de gardiens: Martins (spec: fauve), Labbe (spec:fauve), Lachaize (spec:'fauve','fosse','petits oiseaux'), Huard (spec:'fosse'), STMarcel (vide)
 // pour l'instant ils doivent avoir une collection de cages gard�es vide
 insert into LesEmployes values (tgardien('Martins','Calvi',tspecialites('fauve'),ens_cages()));
-insert into LesEmployes values (tgardien('Labbe','',tspecialites('fauve'),ens_cages()));
-insert into LesEmployes values (tgardien('Lachaize','',tspecialites('fauve','fosse','petits oiseaux'),ens_cages()));
-insert into LesEmployes values (tgardien('Huard','',tspecialites('fosse'),ens_cages()));
-insert into LesEmployes values (tgardien('STMarcel','',tspecialites(),ens_cages()));
+insert into LesEmployes values (tgardien('Labbe','Annecy',tspecialites('fauve'),ens_cages()));
+insert into LesEmployes values (tgardien('Lachaize','Grenoble',tspecialites('fauve','fosse','petits oiseaux'),ens_cages()));
+insert into LesEmployes values (tgardien('Huard','Argouges',tspecialites('fosse'),ens_cages()));
+insert into LesEmployes values (tgardien('STMarcel','Victor Hugo',tspecialites(),ens_cages()));
 
 // ins�rer les cages
 insert into LesCages values (11 ,  'fauve'           , 10 );
