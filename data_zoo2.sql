@@ -35,6 +35,9 @@ insert into LesCages values (12     , 'fauve' , 10);
 // et enfin Lachaize � nouveau pour la cage 3 (ce qui prouve qu'on peut ajouter des �l�ments � la collection ! 
 insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Martins' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (11,12));
 insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Labbe' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (11,12));
+insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Lachaize' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (1,11,12));
+insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Huard' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (1));
+insert into Table(select treat(value(g) as tgardien).liste_cages from lesemployes g where nomE='Lachaize' ) value (SELECT REF(c) FROM lesCages c WHERE c.nocage in (3));
 
 / Insertion des instances d'animaux
 // ATTENTION: l'avant dernier attribut est une r�f�rence sur une cage et pas un num�ro de cage (sinon revoir le sch�ma)=> requ�te SQL
