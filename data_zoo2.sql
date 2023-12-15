@@ -29,7 +29,8 @@ insert into LesCages values (12     , 'fauve' , 10);
 // Attention: on ins�re des r�f�rences sur des gardiens (et pas directement les objets)
 // Demandez-vous pourquoi ce choix ? Et quel serait les implications d'un ajout direct d'objet par exemple ?
 
-  // C'est pour éviter des objects cages qui se répètent partout dans la table les employes des gardiens. Pointer la liste des cages dans la réferendes descages permet d'économiser la mémoire et eviter les doublons.
+  // C'est pour éviter des objects cages qui se répètent partout dans la table les employes des gardiens. 
+  //Pointer la liste des cages dans la réferendes descages permet d'économiser la mémoire et eviter les doublons.
   
 // Faire d�j� Martins avec les cages 11 et 12
 // ensuite Labbe avec aussi la 11 et 12
